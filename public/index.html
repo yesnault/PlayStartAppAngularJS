@@ -1,0 +1,84 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" lang="en" id="ng-app" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <title>PlayStartAppAngularJS</title>
+    <link rel="stylesheet" href="/stylesheets/ng-table.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+
+    <script src="/javascripts/libs/jquery/jquery-2.1.0.min.js"></script>
+    <script src="/javascripts/libs/angular/angular.min.js"></script>
+    <script src="/javascripts/libs/ngtable/ng-table.min.js"></script>
+
+</head>
+<body>
+
+<div ng-controller="MenuCtrl" class="navbar navbar-inverse navbar-default" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars fa-lg fa-inverse"></span>
+        </button>
+        <a class="navbar-brand" href="#/home">
+            <i class="fa fa-rocket"></i> PlayStartAppAngularJS
+        </a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+        <div class="navbar-inner">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li active-link="active" link="users"><a href="#/admin/users"><i
+                                class="fa fa-pencil fa fa-white"></i> Users</a></li>
+
+                        <li active-link="active" link="monitor"><a href="#/monitor"><i class="fa fa-dashboard"></i> </i>
+                            Monitoring </a></li>
+                        <li active-link="active" link="monitor"><a href="#/logs"><i class="fa fa-dashboard"></i> </i>
+                            Logs Level </a></li>
+                        <li active-link="active" link="metrics"><a href="#/metrics"><i class="fa fa-dashboard"></i> </i>
+                            Metrics </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container" ng-view></div>
+
+<hr>
+<div class="footer text-center">
+    <div>
+        <small>
+            Hello! I'm your friendly footer. If you're actually reading this, I'm impressed....
+            <a href="https://github.com/yesnault/PlayStartAppAngularJS">Fork me on Github</a> <i class="fa fa-github fa-1"></i> <a href="https://github.com/yesnault/PlayStartAppAngularJS">https://github.com/yesnault/PlayStartAppAngularJS</a>
+
+        </small>
+    </div>
+</div>
+
+<script src="/javascripts/libs/bootstrap/bootstrap.min.js"></script>
+<script src="/javascripts/libs/angular/angular-animate.min.js"></script>
+<script src="/javascripts/libs/angular/angular-resource.min.js"></script>
+<script src="/javascripts/libs/angular/angular-route.min.js"></script>
+<script src="/javascripts/app/controllers/homeController.js"></script>
+<script src="/javascripts/app/controllers/menuController.js"></script>
+<script src="/javascripts/app/controllers/admin/adminUsersController.js"></script>
+<script src="/javascripts/app/controllers/admin/monitorController.js"></script>
+<script src="/javascripts/main.js"></script>
+<script src="/javascripts/app/app.js"></script>
+<script src="/javascripts/app/directives.js"></script>
+<script src="/javascripts/app/services.js"></script>
+<script src="/javascripts/app/filters.js"></script>
+
+</body>
+</html>

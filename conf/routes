@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET           /                                         controllers.Assets.at(path="/public", file="index.html")
+
+# Monitoring
+GET           /monitor/logfile                          controllers.Monitor.logfile
+GET           /monitor/socket                           controllers.Monitor.socket
+GET           /monitor/downloadLogFile                  controllers.Monitor.downloadLogFile
+POST          /gc!                                      controllers.Metrics.gc
+GET           /metrics                                  controllers.Metrics.metrics
+GET           /logs                                     controllers.Logs.logs
+GET           /logs/change/:loggerName/:newLevel        controllers.Logs.changeLevel(loggerName, newLevel)
+
+# Users
+GET           /users/options                            controllers.admin.Users.findAll
+GET           /users/listDatatable                      controllers.admin.Users.listDatatable
+POST          /users/:id                                controllers.admin.Users.save(id:Long)
+GET           /users/:id                                controllers.admin.Users.edit(id:Long)
+DELETE        /users/:id                                controllers.admin.Users.delete(id:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /ng-table/*file                           controllers.Assets.at(path="/public/javascripts/libs/ngtable/ng-table",file)
+GET           /*file                                    controllers.Assets.at(path="/public", file)
+
+
+

@@ -1,0 +1,27 @@
+<div id="onError" class="alert alert-error" ng-show="isError">
+    <p>
+        <span><strong> {{ errorInfo }} </strong> </span>
+    </p>
+</div>
+
+<span class="label label-success liveOnAir" ng-show="isLiveOn">On Air <i class="fa fa-bullhorn"></i></span>
+<span class="label label-important liveOff" ng-show="!isLiveOn">Off <i class="fa fa-ban-circle"></i></span>
+
+<button type="button" class="btn btn-warning liveOnAir" ng-show="isLiveOn" ng-click="stopWS()">
+    <i class="fa fa-stop"></i>
+</button>
+<button type="button" class="btn btn-success liveOff" ng-show="!isLiveOn" ng-click="startWS()">
+    <i class="fa fa-play"></i>
+</button>
+
+<button class="btn btn-primary" ng-click="downloadLogFile()">
+    <i class="fa fa-download"></i> Download Logs File
+</button>
+
+
+<h3>Logs : tail -f {{ logfile }} </h3>
+<div class="row" id="logs">
+    <ul>
+        <!--@* Intentionally left open, so logs can gradually append as they come *@-->
+</div>
+

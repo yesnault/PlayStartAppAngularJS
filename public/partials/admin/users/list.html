@@ -1,0 +1,21 @@
+<div>
+
+    <h2>Users <a href="#/documentation/overview/what_is_a_user"><i class="fa fa-question-sign"></i></a></h2>
+
+    <a class="btn btn-primary" href="#/admin/users/new"><i class="fa fa-plus"></i> Add a new user</a>
+
+    <p>There are {{ users.length }} users.</p>
+
+    <div dir-showresults></div>
+
+    <table ng-table="tableParams" class="table table-striped table-bordered">
+        <tr ng-repeat="line in $data">
+            <td data-title="'Username'" sortable="'username'">
+                {{line.username}}
+            </td>
+            <td data-title="'Edit'">
+                <a class="table-pencil" href="#/admin/users/{{ line.id }}"><i class="fa fa-pencil"></i></a>
+            </td>
+        </tr>
+    </table>
+</div>
