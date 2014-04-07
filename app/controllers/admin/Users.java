@@ -1,6 +1,7 @@
 package controllers.admin;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import models.Role;
 import models.User;
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -45,7 +46,8 @@ public class Users extends Controller {
                 );
             } else {
                 user = User.update(id,
-                        form().bindFromRequest().get("username")
+                        form().bindFromRequest().get("username"),
+                        form().bindFromRequest().get("role")
                 );
             }
 
@@ -60,6 +62,10 @@ public class Users extends Controller {
     public static Result delete(Long id) {
         User.delete(id);
         return ok("user with id " + id + " deleted");
+    }
+
+    public static Result listRoles() {
+         return ok(Json.toJson(Role.findAll()));
     }
 }
 

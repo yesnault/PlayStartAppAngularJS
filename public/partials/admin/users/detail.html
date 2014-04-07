@@ -7,11 +7,20 @@
             <input type="hidden" name="username" ng-model="user.id">
             <div class="form-group" ng-class="{error: myForm.username.$invalid}">
                 <label for="usernameUser" class="col-lg-2 control-label">Username</label>
-
                 <div class="col-lg-6">
                     <input class="form-control" type="text" id="usernameUser" name="usernameUser"
                            ng-model="user.username" required maxlength="15">
                     <span ng-show="myForm.usernameUser.$error.required" class="help-inline">Required</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label profile class="col-lg-2 control-label" for="role">Role</label>
+                <div class="col-lg-6">
+                    <select ui-select2 id="role" name="role"
+                            ng-model="user.role" class="form-control input-sm">
+                        <option ng-repeat="(key, value) in allRoles" value="{{key}}">{{value}}</option>
+                    </select>
                 </div>
             </div>
 
@@ -22,7 +31,6 @@
                     <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
                             class="btn btn-primary"><i class="fa fa-save"></i> Save
                     </button>
-
 
                     <span ng-show="user.id > 0">
                         <button ng-click="askDelete=true" ng-hide="askDelete" class="btn btn-danger">Delete</button>
@@ -36,6 +44,7 @@
                         </button>
                     </span>
                 </div>
+
             </div>
 
             <div ng-show="updated" class="alert alert-info">User is saved at {{updated | date:'medium'}}</div>

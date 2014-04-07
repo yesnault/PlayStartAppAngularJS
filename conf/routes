@@ -5,6 +5,11 @@
 # Home page
 GET           /                                         controllers.Assets.at(path="/public", file="index.html")
 
+# Security
+POST          /login                                    controllers.SecurityController.login()
+POST          /logout                                   controllers.SecurityController.logout()
+GET           /ping                                     controllers.SecurityController.ping()
+
 # Monitoring
 GET           /monitor/logfile                          controllers.Monitor.logfile
 GET           /monitor/socket                           controllers.Monitor.socket
@@ -15,6 +20,7 @@ GET           /logs                                     controllers.Logs.logs
 GET           /logs/change/:loggerName/:newLevel        controllers.Logs.changeLevel(loggerName, newLevel)
 
 # Users
+GET           /users/roles                              controllers.admin.Users.listRoles
 GET           /users/options                            controllers.admin.Users.findAll
 GET           /users/listDatatable                      controllers.admin.Users.listDatatable
 POST          /users/:id                                controllers.admin.Users.save(id:Long)

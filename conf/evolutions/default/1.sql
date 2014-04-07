@@ -6,6 +6,8 @@
 create table user (
   id                        bigint not null,
   username                  varchar(255),
+  auth_token                varchar(255),
+  role                      varchar(256),
   constraint pk_user primary key (id))
 ;
 

@@ -7,11 +7,11 @@ function AdminUsersCtrl($scope, UsersService, $filter, ngTableParams) {
                 page: 1,            // show first page
                 count: 10,          // count per page
                 sorting: {
-                    'name':'asc'     // initial sorting
+                    'name': 'asc'     // initial sorting
                 }
             }, {
                 total: $scope.users.length, // length of data
-                getData: function($defer, params) {
+                getData: function ($defer, params) {
                     var datafilter = $filter('filter');
                     var usersData = datafilter($scope.users, $scope.tableFilter);
                     var orderedData = params.sorting() ? $filter('orderBy')(usersData, params.orderBy()) : usersData;
@@ -31,7 +31,7 @@ function AdminUsersCtrl($scope, UsersService, $filter, ngTableParams) {
         });
 }
 
-function AdminUserEditCtrl($scope, $routeParams, $location, User) {
+function AdminUserEditCtrl($scope, $routeParams, $location, User, UsersService) {
 
     $scope.title = "Edit a user";
 
@@ -40,6 +40,7 @@ function AdminUserEditCtrl($scope, $routeParams, $location, User) {
     User.get({userId: $routeParams.userId}, function (user) {
         self.original = user;
         $scope.user = new User(self.original);
+        UsersService.findRoles($scope);
     });
 
     $scope.isClean = function () {
@@ -68,7 +69,7 @@ function AdminUserNewCtrl($scope, $location, User, UsersService) {
     $scope.title = "Add a new user";
 
     UsersService.findAllAndSelectUser($scope);
-    $scope.user = new User({id:'-1'});
+    $scope.user = new User({id: '-1'});
     $scope.save = function () {
         $scope.user.update(function (user) {
             $location.path('/admin/users/' + user.id);
@@ -76,4 +77,7 @@ function AdminUserNewCtrl($scope, $location, User, UsersService) {
             alert(response.data);
         });
     }
+
+    // Load users roles
+    UsersService.findRoles($scope);
 }
